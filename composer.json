@@ -1,12 +1,12 @@
 {
-    "name": "johnitvn/yii2-ajaxcrud",
-    "description": "Gii CRUD template for Single Page Ajax Administration for yii2",
+    "name": "lgXenos/yii2-ajaxcrud",
+    "description": "yii2 Gii CRUD шаблон для администрирования через SinglePage Ajax",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","ajax","crud","gii","template","database"],
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "John Martin",
+            "name": "John Martin, RomanSh",
             "email": "john.itvn@gmail.com",
             "homepage": "https://github.com/johnitvn?tab=repositories"
         }
