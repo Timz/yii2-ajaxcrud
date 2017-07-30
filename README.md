@@ -1,4 +1,4 @@
-yii2-ajaxcrud 
+yii2-ajaxcrud (rus)
 =============
 
 [![Latest Stable Version](https://poser.pugx.org/johnitvn/yii2-ajaxcrud/v/stable)](https://packagist.org/packages/johnitvn/yii2-ajaxcrud)
