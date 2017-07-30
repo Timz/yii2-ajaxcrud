@@ -5,7 +5,9 @@ yii2-ajaxcrud
 [![License](https://poser.pugx.org/johnitvn/yii2-ajaxcrud/license)](https://packagist.org/packages/johnitvn/yii2-ajaxcrud)
 [![Total Downloads](https://poser.pugx.org/johnitvn/yii2-ajaxcrud/downloads)](https://packagist.org/packages/johnitvn/yii2-ajaxcrud)
 
-Gii CRUD template for Single Page Ajax Administration for yii2 
+yii2 Gii CRUD шаблон для администрирования через SinglePage Ajax
+
+```Немного русифицированная версия```
 
 ![yii2 ajaxcrud extension screenshot](https://c1.staticflickr.com/1/330/18659931433_6e3db2461d_o.png "yii2 ajaxcrud extension screenshot")
 
@@ -25,13 +27,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist johnitvn/yii2-ajaxcrud "*"
+php composer.phar require --prefer-dist lgxenos/yii2-ajaxcrud "*"
 ```
 
 or add
 
 ```
-"johnitvn/yii2-ajaxcrud": "*"
+"lgxenos/yii2-ajaxcrud": "*"
 ```
 
 to the require section of your `composer.json` file.
