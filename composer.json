@@ -1,5 +1,5 @@
 {
-    "name": "lgXenos/yii2-ajaxcrud",
+    "name": "lg-xenos/yii2-ajaxcrud",
     "description": "yii2 Gii CRUD шаблон для администрирования через SinglePage Ajax",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","ajax","crud","gii","template","database"],
