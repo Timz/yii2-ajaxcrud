@@ -27,13 +27,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist lgxenos/yii2-ajaxcrud "*"
+php composer.phar require --prefer-dist lg-xenos/yii2-ajaxcrud "*"
 ```
 
 or add
 
 ```
-"lgxenos/yii2-ajaxcrud": "*"
+"lg-xenos/yii2-ajaxcrud": "*"
 ```
 
 to the require section of your `composer.json` file.
