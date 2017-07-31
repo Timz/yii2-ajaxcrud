@@ -35,7 +35,7 @@ class Generator extends \yii\gii\Generator
      */
     public function getName()
     {
-        return 'Ajax CRUD Generator';
+        return 'Ajax CRUD Генератор';
     }
 
     /**
@@ -43,8 +43,8 @@ class Generator extends \yii\gii\Generator
      */
     public function getDescription()
     {
-        return 'This generator generates a controller and views that implement CRUD (Create, Read, Update, Delete)
-            operations for the specified data model with template for Single Page Ajax Administration';
+        return 'Этот генератор создает контроллеры и вьюхи, которые реализуют CRUD (Create, Read, Update, Delete)
+            операции для указанных моделей данных по шаблону Single Page Ajax Administration';
     }
 
     /**
@@ -55,12 +55,12 @@ class Generator extends \yii\gii\Generator
         return array_merge(parent::rules(), [
             [['controllerClass', 'modelClass', 'searchModelClass', 'baseControllerClass'], 'filter', 'filter' => 'trim'],
             [['modelClass', 'controllerClass', 'baseControllerClass'], 'required'],
-            [['searchModelClass'], 'compare', 'compareAttribute' => 'modelClass', 'operator' => '!==', 'message' => 'Search Model Class must not be equal to Model Class.'],
-            [['modelClass', 'controllerClass', 'baseControllerClass', 'searchModelClass'], 'match', 'pattern' => '/^[\w\\\\]*$/', 'message' => 'Only word characters and backslashes are allowed.'],
+            [['searchModelClass'], 'compare', 'compareAttribute' => 'modelClass', 'operator' => '!==', 'message' => 'Search Model Class должен быть идентичен с Model Class.'],
+            [['modelClass', 'controllerClass', 'baseControllerClass', 'searchModelClass'], 'match', 'pattern' => '/^[\w\\\\]*$/', 'message' => 'Допустимы только латинские буквы и "\".'],
             [['modelClass'], 'validateClass', 'params' => ['extends' => BaseActiveRecord::className()]],
             [['baseControllerClass'], 'validateClass', 'params' => ['extends' => Controller::className()]],
-            [['controllerClass'], 'match', 'pattern' => '/Controller$/', 'message' => 'Controller class name must be suffixed with "Controller".'],
-            [['controllerClass'], 'match', 'pattern' => '/(^|\\\\)[A-Z][^\\\\]+Controller$/', 'message' => 'Controller class name must start with an uppercase letter.'],
+            [['controllerClass'], 'match', 'pattern' => '/Controller$/', 'message' => 'Controller class должен начинаться с "Controller".'],
+            [['controllerClass'], 'match', 'pattern' => '/(^|\\\\)[A-Z][^\\\\]+Controller$/', 'message' => 'Controller class должен начинаться с заглавной буквы.'],
             [['controllerClass', 'searchModelClass'], 'validateNewClass'],
             [['modelClass'], 'validateModelClass'],
             [['enableI18N'], 'boolean'],
@@ -131,7 +131,7 @@ class Generator extends \yii\gii\Generator
         $class = $this->modelClass;
         $pk = $class::primaryKey();
         if (empty($pk)) {
-            $this->addError('modelClass', "The table associated with $class must have primary key(s).");
+            $this->addError('modelClass', "Таблица, связанная с $class должна иметь primary-key(s).");
         }
     }
 

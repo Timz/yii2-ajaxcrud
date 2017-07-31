@@ -45,9 +45,9 @@ $(document).ready(function () {
         if (selectedIds.length == 0) {
             // If no selected ID's show warning
             modal.show();
-            modal.setTitle('No selection');
-            modal.setContent('You must select item(s) to use this action');
-            modal.addFooterButton("Close", 'btn btn-default', function (button, event) {
+            modal.setTitle('Ничего не выбрано');
+            modal.setContent('Выберите что-то, для этого действия');
+            modal.addFooterButton("Закрыть", 'btn btn-default', function (button, event) {
                 this.hide();
             });
         } else {

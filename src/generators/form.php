@@ -3,7 +3,7 @@
 /* @var $form yii\widgets\ActiveForm */
 /* @var $generator johnitvn\ajaxcrud\generators\Generator */
 
-echo '<h3>General Configuration</h2>';
+echo '<h3>Основная конфигурация</h2>';
 echo $form->field($generator, 'modelClass');
 echo $form->field($generator, 'searchModelClass');
 echo $form->field($generator, 'controllerClass');

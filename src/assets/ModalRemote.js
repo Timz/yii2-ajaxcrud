@@ -15,9 +15,9 @@ function ModalRemote(modalId) {
 
     this.defaults = {
         okLabel: "OK",
-        executeLabel: "Execute",
-        cancelLabel: "Cancel",
-        loadingTitle: "Loading"
+        executeLabel: "Выполнить",
+        cancelLabel: "Отмена",
+        loadingTitle: "Загрузка"
     };
 
     this.modal = $(modalId);
@@ -138,12 +138,13 @@ function ModalRemote(modalId) {
 
     /**
      * Add button to footer
-     * @param string label The label of button
-     * @param string classes The class of button
-     * @param callable callback the callback when button click
+     * @param label 	string 		The label of button
+     * @param type 		string
+     * @param classes 	string		The class of button
+     * @param callback	callable  	the callback when button click
      */
     this.addFooterButton = function (label, type, classes, callback) {
-        buttonElm = document.createElement('button');
+        var buttonElm = document.createElement('button');
         buttonElm.setAttribute('type', type === null ? 'button' : type);
         buttonElm.setAttribute('class', classes === null ? 'btn btn-primary' : classes);
         buttonElm.innerHTML = label;
@@ -202,7 +203,7 @@ function ModalRemote(modalId) {
     function errorRemoteResponse(response) {
         this.setTitle(response.status + response.statusText);
         this.setContent(response.responseText);
-        this.addFooterButton('Close', 'button', 'btn btn-default', function (button, event) {
+        this.addFooterButton('Закрыть', 'button', 'btn btn-default', function (button, event) {
             this.hide();
         })
     }
@@ -258,7 +259,7 @@ function ModalRemote(modalId) {
 
         if (modalFormSubmitBtn === undefined) {
             // If submit button not found throw warning message
-            console.warn('Modal has form but does not have a submit button');
+            console.warn('Modal содержит форму, но не имеет submit button');
         } else {
             var instance = this;
 
@@ -344,7 +345,7 @@ function ModalRemote(modalId) {
             }
         );
 
-    }
+    };
 
     /**
      * Open the modal

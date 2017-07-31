@@ -64,7 +64,8 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     }
 
     /**
-     * Lists all <?= $modelClass ?> models.
+     * Список всех <?= $modelClass ?> моделей
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -90,8 +91,9 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
 
     /**
-     * Displays a single <?= $modelClass ?> model.
+     * Отображает одну выбранную <?= $modelClass ?> модель
      * <?= implode("\n     * ", $actionParamComments) . "\n" ?>
+     *
      * @return mixed
      */
     public function actionView(<?= $actionParams ?>)
@@ -104,10 +106,11 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
                     'content'=>$this->renderAjax('view', [
                         'model' => $this->findModel(<?= $actionParams ?>),
                     ]),
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                            Html::a('Edit',['update','<?= substr($actionParams,1) ?>'=><?= $actionParams ?>],['class'=>'btn btn-primary','role'=>'modal-remote'])
+                    'footer'=> Html::button('Закрыть',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                            Html::a('Правка',['update','<?= substr($actionParams,1) ?>'=><?= $actionParams ?>],['class'=>'btn btn-primary','role'=>'modal-remote'])
                 ];    
-        }else{
+        }
+		else{
             return $this->render('view', [
                 'model' => $this->findModel(<?= $actionParams ?>),
             ]);
@@ -115,9 +118,10 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     }
 
     /**
-     * Creates a new <?= $modelClass ?> model.
-     * For ajax request will return json object
-     * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
+     * Добавляет запись в модельку <?= $modelClass ?>
+     * Для аякс-запросов - возвращает ответ в формате json
+     * и для не аяксов, если создание успешно редиректит браузер на страницу просмотра
+	 *
      * @return mixed
      */
     public function actionCreate()
@@ -127,46 +131,50 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
         if($request->isAjax){
             /*
-            *   Process for ajax request
+            *   Обработка аякс-запроса
             */
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Create new <?= $modelClass ?>",
+                    'title'=> "Добавить запись <?= $modelClass ?>",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                                Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
-        
-                ];         
-            }else if($model->load($request->post()) && $model->save()){
-                return [
-                    'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Create new <?= $modelClass ?>",
-                    'content'=>'<span class="text-success">Create <?= $modelClass ?> success</span>',
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                            Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
-        
-                ];         
-            }else{           
-                return [
-                    'title'=> "Create new <?= $modelClass ?>",
-                    'content'=>$this->renderAjax('create', [
-                        'model' => $model,
-                    ]),
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                                Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+                    'footer'=> Html::button('Закрыть',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button('Сохранить',['class'=>'btn btn-primary','type'=>"submit"])
         
                 ];         
             }
-        }else{
+			else if($model->load($request->post()) && $model->save()){
+                return [
+                    'forceReload'=>'#crud-datatable-pjax',
+                    'title'=> "Добавить запись <?= $modelClass ?>",
+                    'content'=>'<span class="text-success">Create <?= $modelClass ?> success</span>',
+                    'footer'=> Html::button('Закрыть',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                            Html::a('Добавить еще',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
+        
+                ];         
+            }
+			else{           
+                return [
+                    'title'=> "Добавить запись <?= $modelClass ?>",
+                    'content'=>$this->renderAjax('create', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button('Закрыть',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button('Сохранить',['class'=>'btn btn-primary','type'=>"submit"])
+        
+                ];         
+            }
+        }
+		else{
             /*
-            *   Process for non-ajax request
+            *   Обработка обычного, не аякс-запроса
             */
             if ($model->load($request->post()) && $model->save()) {
                 return $this->redirect(['view', <?= $urlParams ?>]);
-            } else {
+            }
+			else {
                 return $this->render('create', [
                     'model' => $model,
                 ]);
@@ -176,10 +184,11 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     }
 
     /**
-     * Updates an existing <?= $modelClass ?> model.
-     * For ajax request will return json object
-     * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
+     * Редактирует существующую запись модели <?= $modelClass ?>
+ 	 * Для аякс-запросов - возвращает ответ в формате json
+	 * и для не аяксов, если правка успешна редиректит браузер на страницу просмотра
      * <?= implode("\n     * ", $actionParamComments) . "\n" ?>
+     * 
      * @return mixed
      */
     public function actionUpdate(<?= $actionParams ?>)
@@ -189,45 +198,49 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
         if($request->isAjax){
             /*
-            *   Process for ajax request
+            *   Обработка аякс-запроса
             */
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Update <?= $modelClass ?> #".<?= $actionParams ?>,
+                    'title'=> "Правка <?= $modelClass ?> #".<?= $actionParams ?>,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                                Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+                    'footer'=> Html::button('Закрыть',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button('Сохранить',['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
+            }
+			else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> "<?= $modelClass ?> #".<?= $actionParams ?>,
                     'content'=>$this->renderAjax('view', [
                         'model' => $model,
                     ]),
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                            Html::a('Edit',['update','<?= substr($actionParams,1) ?>'=><?= $actionParams ?>],['class'=>'btn btn-primary','role'=>'modal-remote'])
+                    'footer'=> Html::button('Закрыть',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                            Html::a('Правка',['update','<?= substr($actionParams,1) ?>'=><?= $actionParams ?>],['class'=>'btn btn-primary','role'=>'modal-remote'])
                 ];    
-            }else{
+            }
+			else{
                  return [
-                    'title'=> "Update <?= $modelClass ?> #".<?= $actionParams ?>,
+                    'title'=> "Правка <?= $modelClass ?> #".<?= $actionParams ?>,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                                Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+                    'footer'=> Html::button('Закрыть',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button('Сохранить',['class'=>'btn btn-primary','type'=>"submit"])
                 ];        
             }
-        }else{
+        }
+		else{
             /*
-            *   Process for non-ajax request
+            *   Обработка обычного, не аякс-запроса
             */
             if ($model->load($request->post()) && $model->save()) {
                 return $this->redirect(['view', <?= $urlParams ?>]);
-            } else {
+            }
+			else {
                 return $this->render('update', [
                     'model' => $model,
                 ]);
@@ -236,10 +249,11 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     }
 
     /**
-     * Delete an existing <?= $modelClass ?> model.
-     * For ajax request will return json object
-     * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
+     * Удаление существующей модели <?= $modelClass ?>
+	 * Для аякс-запросов - возвращает ответ в формате json
+	 * и для не аяксов, если удаление успешно редиректит браузер на index
      * <?= implode("\n     * ", $actionParamComments) . "\n" ?>
+     *
      * @return mixed
      */
     public function actionDelete(<?= $actionParams ?>)
@@ -249,13 +263,14 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
         if($request->isAjax){
             /*
-            *   Process for ajax request
+            *   Обработка аякс-запроса
             */
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ['forceClose'=>true,'forceReload'=>'#crud-datatable-pjax'];
-        }else{
+        }
+		else{
             /*
-            *   Process for non-ajax request
+            *   Обработка обычного, не аякс-запроса
             */
             return $this->redirect(['index']);
         }
@@ -264,10 +279,11 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     }
 
      /**
-     * Delete multiple existing <?= $modelClass ?> model.
-     * For ajax request will return json object
-     * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
+     * Групповое удаление существующих моделей <?= $modelClass ?>
+	 * Для аякс-запросов - возвращает ответ в формате json
+	 * и для не аяксов, если удаление успешно редиректит браузер на index
      * <?= implode("\n     * ", $actionParamComments) . "\n" ?>
+     *
      * @return mixed
      */
     public function actionBulkdelete()
@@ -281,13 +297,14 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
         if($request->isAjax){
             /*
-            *   Process for ajax request
+            *   Обработка аякс-запроса
             */
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ['forceClose'=>true,'forceReload'=>'#crud-datatable-pjax'];
-        }else{
+        }
+		else{
             /*
-            *   Process for non-ajax request
+            *   Обработка обычного, не аякс-запроса
             */
             return $this->redirect(['index']);
         }
@@ -295,11 +312,12 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     }
 
     /**
-     * Finds the <?= $modelClass ?> model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
+     * Ищет <?= $modelClass ?> модель, основываясь на значение ее primary key
+     * Если модель не будет найдена, то выбрасывается исключение NotFoundHttpException
      * <?= implode("\n     * ", $actionParamComments) . "\n" ?>
+     *
      * @return <?=                   $modelClass ?> the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException если модель не будет найдена
      */
     protected function findModel(<?= $actionParams ?>)
     {
@@ -316,8 +334,9 @@ if (count($pks) === 1) {
 ?>
         if (($model = <?= $modelClass ?>::findOne(<?= $condition ?>)) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+		else {
+            throw new NotFoundHttpException('Запрошенная страница не существует!');
         }
     }
 }
