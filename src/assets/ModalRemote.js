@@ -59,7 +59,14 @@ function ModalRemote(modalId) {
      * Clear modal
      */
     this.clear = function () {
-        $(this.modal).find('.modal-title').remove();
+    	// fix TinyMCE re-runs
+		if(window.tinyMCE !== undefined && tinyMCE.editors.length){
+			for(e in tinyMCE.editors){
+				tinyMCE.editors[e].destroy();
+			}
+		}
+
+		$(this.modal).find('.modal-title').remove();
         $(this.content).html("");
         $(this.footer).html("");
     };
