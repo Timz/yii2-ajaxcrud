@@ -277,7 +277,7 @@ function ModalRemote(modalId) {
 				// fix TinyMCE save on Ajax
 				if(window.tinyMCE !== undefined && tinyMCE.editors.length){
 					for(e in tinyMCE.editors){
-						tinyMCE.editors[e].destroy();
+						tinyMCE.editors[e].save();
 					}
 				}
 
