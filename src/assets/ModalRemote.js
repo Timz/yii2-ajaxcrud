@@ -274,6 +274,13 @@ function ModalRemote(modalId) {
             $(modalFormSubmitBtn).click(function (e) {
                 var data;
 
+				// fix TinyMCE save on Ajax
+				if(window.tinyMCE !== undefined && tinyMCE.editors.length){
+					for(e in tinyMCE.editors){
+						tinyMCE.editors[e].destroy();
+					}
+				}
+
                 // Test if browser supports FormData which handles uploads
                 if (window.FormData) {
                     data = new FormData($(modalForm)[0]);
