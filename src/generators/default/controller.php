@@ -149,7 +149,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> "Добавить запись <?= $modelClass ?>",
-                    'content'=>'<span class="text-success">Create <?= $modelClass ?> success</span>',
+                    'content'=>'<span class="text-success">Создание <?= $modelClass ?> успешно</span>',
                     'footer'=> Html::button('Закрыть',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a('Добавить еще',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
         
