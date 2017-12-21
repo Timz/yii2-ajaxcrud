@@ -6,6 +6,13 @@
  */
 $(document).ready(function () {
 
+	// фикс наложений модальных попапов MCE
+	$(document).on('focusin', function(e) {
+		if ($(e.target).closest(".mce-window").length) {
+			e.stopImmediatePropagation();
+		}
+	});
+
     // Create instance of Modal Remote
     // This instance will be the controller of all business logic of modal
     // Backwards compatible lookup of old ajaxCrubModal ID
