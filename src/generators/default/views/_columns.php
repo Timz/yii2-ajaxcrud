@@ -34,7 +34,8 @@ return [
     $count = 0;
     foreach ($generator->getColumnNames() as $name) {   
         if ($name=='created'||$name=='edited'){
-            echo "GridViewHelper::colDatetime(' ". $name ."'),";
+            echo "GridViewHelper::colDatetime('". $name ."'),";
+            echo "\n";
 /*            echo "    // [\n";
             echo "        // 'class'=>'\kartik\grid\DataColumn',\n";
             echo "        // 'attribute'=>'" . $name . "',\n";
