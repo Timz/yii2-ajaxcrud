@@ -19,6 +19,7 @@ echo "<?php\n";
 
 ?>
 use yii\helpers\Url;
+use app\widgets\GridViewHelper;
 
 return [
     [
@@ -32,11 +33,12 @@ return [
     <?php
     $count = 0;
     foreach ($generator->getColumnNames() as $name) {   
-        if ($name=='id'||$name=='created_at'||$name=='updated_at'){
-            echo "    // [\n";
+        if ($name=='created'||$name=='edited'){
+            echo "GridViewHelper::colDatetime(' ". $name ."'),";
+/*            echo "    // [\n";
             echo "        // 'class'=>'\kartik\grid\DataColumn',\n";
             echo "        // 'attribute'=>'" . $name . "',\n";
-            echo "    // ],\n";
+            echo "    // ],\n";*/
         } else if (++$count < 6) {
             echo "    [\n";
             echo "        'class'=>'\kartik\grid\DataColumn',\n";
@@ -52,6 +54,7 @@ return [
     ?>
     [
         'class' => 'kartik\grid\ActionColumn',
+        'template' => "{update}&nbsp{delete}",
         'dropdown' => false,
         'vAlign'=>'middle',
         'urlCreator' => function($action, $model, $key, $index) { 
