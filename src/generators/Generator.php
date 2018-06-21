@@ -35,7 +35,7 @@ class Generator extends \yii\gii\Generator
      */
     public function getName()
     {
-        return 'Ajax CRUD Генератор отдельных списков';
+        return 'Ajax CRUD. Standalone';
     }
 
     /**
