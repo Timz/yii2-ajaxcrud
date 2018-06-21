@@ -5,7 +5,7 @@ yii2-ajaxcrud (rus)
 [![License](https://poser.pugx.org/johnitvn/yii2-ajaxcrud/license)](https://packagist.org/packages/johnitvn/yii2-ajaxcrud)
 [![Total Downloads](https://poser.pugx.org/johnitvn/yii2-ajaxcrud/downloads)](https://packagist.org/packages/johnitvn/yii2-ajaxcrud)
 
-yii2 Gii CRUD шаблон для администрирования через SinglePage Ajax
+yii2 Gii CRUD шаблон для администрирования через SinglePage Ajax!
 
 ```Немного русифицированная версия```
 
