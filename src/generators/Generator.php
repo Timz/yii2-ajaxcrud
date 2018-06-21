@@ -27,7 +27,7 @@ class Generator extends \yii\gii\Generator
     public $modelClass;
     public $controllerClass;
     public $viewPath;
-    public $baseControllerClass = 'yii\web\Controller';
+    public $baseControllerClass = 'app\controllers\SecureController';
     public $searchModelClass = '';
 
     /**
@@ -35,7 +35,7 @@ class Generator extends \yii\gii\Generator
      */
     public function getName()
     {
-        return 'Ajax CRUD Генератор';
+        return 'Ajax CRUD Генератор отдельных списков';
     }
 
     /**
