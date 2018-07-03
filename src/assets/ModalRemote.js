@@ -60,11 +60,11 @@ function ModalRemote(modalId) {
      */
     this.clear = function () {
     	// fix TinyMCE re-runs
-		if(window.tinyMCE !== undefined && tinyMCE.editors.length){
+		/*if(window.tinyMCE !== undefined && tinyMCE.editors.length){
 			for(e in tinyMCE.editors){
 				tinyMCE.editors[e].destroy();
 			}
-		}
+		}*/
 
 		$(this.modal).find('.modal-title').remove();
         $(this.content).html("");
@@ -275,11 +275,11 @@ function ModalRemote(modalId) {
                 var data;
 
 				// fix TinyMCE save on Ajax
-				if(window.tinyMCE !== undefined && tinyMCE.editors.length){
+				/*if(window.tinyMCE !== undefined && tinyMCE.editors.length){
 					for(e in tinyMCE.editors){
 						tinyMCE.editors[e].save();
 					}
-				}
+				}*/
 
                 // Test if browser supports FormData which handles uploads
                 if (window.FormData) {
