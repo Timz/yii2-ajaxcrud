@@ -59,6 +59,7 @@ function ModalRemote(modalId) {
      * Clear modal
      */
     this.clear = function () {
+
     	// fix TinyMCE re-runs
 		/*if(window.tinyMCE !== undefined && tinyMCE.editors.length){
 			for(e in tinyMCE.editors){
